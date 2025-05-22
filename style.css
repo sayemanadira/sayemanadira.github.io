@@ -1,14 +1,17 @@
 /* GENERAL */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"); */
+/* @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "DotGothic16", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 html {
@@ -17,9 +20,6 @@ html {
 
 p {
   color: rgb(85, 85, 85);
-}
-img {
-    border-radius: 50%;
 }
 
 /* TRANSITION */
@@ -55,10 +55,10 @@ a {
 }
 
 a:hover {
-  color: grey;
+  color: rgb(102, 174, 105);
   text-decoration: underline;
   text-underline-offset: 1rem;
-  text-decoration-color: rgb(181, 181, 181);
+  text-decoration-color: rgb(80, 152, 99);
 }
 
 .logo {
@@ -234,7 +234,7 @@ section {
 
 .btn-color-1,
 .btn-color-2 {
-  border: rgb(53, 53, 53) 0.1rem solid;
+  border: rgb(174, 10, 10) 0.1rem solid;
 }
 
 .btn-color-1:hover,
@@ -242,14 +242,17 @@ section {
   cursor: pointer;
 }
 
-.btn-color-1,
+.btn-color-1{
+  background: none;
+}
 .btn-color-2:hover {
-  background: rgb(53, 53, 53);
+  background: rgb(193, 10, 10);
   color: white;
 }
 
 .btn-color-1:hover {
-  background: rgb(0, 0, 0);
+  background: rgb(193, 10, 10);
+  color: white;
 }
 
 .btn-color-2 {
@@ -304,6 +307,10 @@ section {
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
   text-align: center;
+  /* font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <>;
+  font-style: normal; */
 }
 
 .section-container {
@@ -364,7 +371,7 @@ article .icon {
 
 .color-container {
   border-color: rgb(163, 163, 163);
-  background: rgb(250, 250, 250);
+  background: rgb(255, 255, 255);
 }
 
 .project-img {
@@ -381,7 +388,9 @@ article .icon {
 .project-btn {
   color: black;
   border-color: rgb(163, 163, 163);
+  
 }
+
 
 /* CONTACT */
 

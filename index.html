@@ -10,11 +10,10 @@
   </head>
   <body>
     <nav id="desktop-nav">
-      <div class="logo">Sayema Lubis</div>
+      <div class="logo">☆ Sayema Lubis ☆</div>
       <div>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -73,7 +72,7 @@
     </section>
     <section id="about">
       <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
+      <h1 class="title">𓆟 𓆞 About Me 𓆝 𓆟</h1>
       <div class="section-container">
         <div class="section__pic-container">
           <img
@@ -104,16 +103,19 @@
             </div>
           </div>
           <div class="text-container">
-            <p>
-              Hi! I'm Sayema Lubis, an Indonesian student at Harvey Mudd College majoring in Physics and Computer Science. I have 
-              deep curiosity for understanding complex systems, both in the physical world and in code.
-               
-              I was involved in research at the Physics of Soft Matter (PoSM) Lab, where I develop MATLAB applications for 
-              high-speed experimental analysis. This summer, I’ll be joining the Music Information Retrieval (MIR) Lab, 
-              combining my love for digital signal processing and sound analysis.
-              Beyond academics, I’m a dedicated mentor for international students through the 
-              NISSO program and serve in student government roles that allow me to organize large-scale campus events, 
-              all while managing a budget of over $20,000. Whether I'm exploring chaos in elastic pendulum simulations or breaking down FFTs in audio files, I love bringing technical depth to real-world problems — and occasionally sharing food from around the world with my community.
+            <p class="custom-font">
+              Hi! I'm Sayema Lubis, an international student from Indonesia studying Physics and Computer Science at 
+              Harvey Mudd College! I’ve conducted research 
+              in the Physics of Soft Matter (PoSM) Lab, developing MATLAB tools 
+              for high-speed experiments, and this summer I’ll be joining the Music Information Retrieval Lab to 
+              explore my love for audio analysis and DSP. 
+              Outside the lab, I mentor fellow international 
+              students through NISSO and help lead event planning as part of 
+              the Associated Students of Harvey Mudd College (ASHMC), managing a $20,000 budget. I also founded Mudd’s
+              first international cooking club, blending my love for global 
+              cuisine with community building. When I’m not coding or cooking, 
+              you’ll probably find me playing piano, classical guitar, or 
+              mixing tracks just for fun :) 
               <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
               reprehenderit et laborum, rem, dolore eum quod voluptate
               exercitationem nobis, nihil esse debitis maxime facere minus sint
@@ -121,6 +123,14 @@
               Eligendi illum libero dolorum cum laboriosam corrupti quidem,
               reiciendis ea magnam? Nulla, impedit fuga! -->
             </p>
+            <style>
+              .custom-font {
+                font-family: "Inter", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 350;
+                font-style: normal;
+              }
+            </style>
           </div>
         </div>
       </div>
@@ -266,8 +276,59 @@
       />
     </section> -->
     <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
+      <p class="section__text__p1">Browse My</p>
+      <h1 class="title bouncing-title">
+        <span>R</span>
+        <span>e</span>
+        <span>c</span>
+        <span>e</span>
+        <span>n</span>
+        <span>t</span>
+        <span> &nbsp; </span>
+        <span>P</span>
+        <span>r</span>
+        <span>o</span>
+        <span>j</span>
+        <span>e</span>
+        <span>c</span>
+        <span>t</span>
+        <span>s</span>
+      </h1>
+      <style> 
+        .bouncing-title {
+          display: flex; /* Align letters in a row */
+          justify-content: center;
+          gap: 2px; /* Space between letters */
+        }
+
+        .bouncing-title span {
+          display: inline-block;
+          animation: bounce 1s ease infinite alternate; /* Bounce effect */
+        }
+
+        /* Bounce Animation (Up and Down) */
+        @keyframes bounce {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-10px); } /* Adjust height (e.g., -20px) */
+        }
+
+        /* Staggered Delay for Each Letter */
+        .bouncing-title span:nth-child(1) { animation-delay: 0.1s; }
+        .bouncing-title span:nth-child(2) { animation-delay: 0.2s; }
+        .bouncing-title span:nth-child(3) { animation-delay: 0.3s; }
+        .bouncing-title span:nth-child(4) { animation-delay: 0.4s; }
+        .bouncing-title span:nth-child(5) { animation-delay: 0.5s; }
+        .bouncing-title span:nth-child(6) { animation-delay: 0.6s; }
+        .bouncing-title span:nth-child(7) { animation-delay: 0.7s; }
+        .bouncing-title span:nth-child(8) { animation-delay: 0.8s; }
+        .bouncing-title span:nth-child(9) { animation-delay: 0.9s; }
+        .bouncing-title span:nth-child(10) { animation-delay: 1s; }
+        .bouncing-title span:nth-child(11) { animation-delay: 1.1s; }
+        .bouncing-title span:nth-child(12) { animation-delay: 1.2s; }
+        .bouncing-title span:nth-child(13) { animation-delay: 1.3s; }
+        .bouncing-title span:nth-child(14) { animation-delay: 1.4s; }
+        /* Continue for all 14 letters... */
+      </style>
       <div class="experience-details-container">
         <div class="about-containers">
           <div class="details-container color-container">
@@ -278,19 +339,19 @@
                 class="project-img"
               />
             </div>
-            <h2 class="experience-sub-title project-title">Project One</h2>
+            <h2 class="experience-sub-title project-title">Real-Time TSM</h2>
             <div class="btn-container">
               <button
                 class="btn btn-color-2 project-btn"
                 onclick="location.href='https://github.com/'"
               >
-                Github
+                Learn more
               </button>
               <button
                 class="btn btn-color-2 project-btn"
                 onclick="location.href='https://github.com/'"
               >
-                Live Demo
+                Try it!
               </button>
             </div>
           </div>
@@ -302,19 +363,19 @@
                 class="project-img"
               />
             </div>
-            <h2 class="experience-sub-title project-title">Project Two</h2>
+            <h2 class="experience-sub-title project-title">Simulating Canonical Ensemble using HMC</h2>
             <div class="btn-container">
               <button
                 class="btn btn-color-2 project-btn"
                 onclick="location.href='https://github.com/'"
               >
-                Github
+                Learn more
               </button>
               <button
                 class="btn btn-color-2 project-btn"
                 onclick="location.href='https://github.com/'"
               >
-                Live Demo
+                Try it!
               </button>
             </div>
           </div>
@@ -326,19 +387,19 @@
                 class="project-img"
               />
             </div>
-            <h2 class="experience-sub-title project-title">Project Three</h2>
+            <h2 class="experience-sub-title project-title">AI Piano Instrumental Generator</h2>
             <div class="btn-container">
               <button
                 class="btn btn-color-2 project-btn"
                 onclick="location.href='https://github.com/'"
               >
-                Github
+                Learn more
               </button>
               <button
                 class="btn btn-color-2 project-btn"
                 onclick="location.href='https://github.com/'"
               >
-                Live Demo
+                Try it!
               </button>
             </div>
           </div>
@@ -361,7 +422,7 @@
             alt="Email icon"
             class="icon contact-icon email-icon"
           />
-          <p><a href="mailto:examplemail@gmail.com">Example@gmail.com</a></p>
+          <p><a href="mailto:examplemail@gmail.com">slubis@hmc.edu</a></p>
         </div>
         <div class="contact-info-container">
           <img
@@ -384,7 +445,7 @@
           </ul>
         </div>
       </nav>
-      <p>Copyright &#169; 2023 John Doe. All Rights Reserved.</p>
+      <p>Copyright &#169; 2025 Sayema Lubis. All Rights Reserved.</p>
     </footer>
     <script src="script.js"></script>
   </body>
