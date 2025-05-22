@@ -62,7 +62,7 @@ a:hover {
 }
 
 .logo {
-  font-size: clamp(1rem, 4vw, 2.5rem); 
+  font-size: clamp(0.5rem, 4vw, 2.5rem); 
 }
 
 .logo:hover {
@@ -198,7 +198,7 @@ section {
 }
 
 .title {
-  font-size: clamp(1rem, 4vw, 3rem); 
+  font-size: clamp(0.5rem, 4vw, 3rem); 
   text-align: center;
 }
 
