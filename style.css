@@ -200,7 +200,7 @@ section {
 }
 
 .title {
-  font-size: clamp(0.5rem, 4vw, 3rem);
+  font-size: clamp(0.1rem, 4vw, 3rem);
   white-space: nowrap; /* Stops text from wrapping */ 
   text-align: center;
 }
