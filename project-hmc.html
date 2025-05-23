@@ -88,7 +88,7 @@
                     }
                 </style>
                 <span>Spring 2025</span>
-                <span>Computational Physics (PHYS170X)</span>
+                <span>Computational Physics</span>
                 <span>Partner(s): Richard Zheng</span>
                 <span>Julia</span>
                 <style>
@@ -121,39 +121,28 @@
             These are combined into an "energy" using a formula called the <em>Hamiltonian</em>. HMC uses this energy to simulate how a particle would move, similar to tracing a smooth path through a landscape.
 
             At each step, HMC:
-            <ol style="margin-top: 0%;">
-            <li>Randomly picks a momentum (like giving the particle a push).</li>
-            <li>Simulates its motion using simple physics equations.</li>
-            <li>Proposes the new position as the next sample.</li>
-            </ol>
-            <style>
-                ol {
-                    margin-top: 0;
-                    margin-bottom: 0;
-                }
-            </style>
-        This method creates long, informed steps that help cover space faster and more accurately than traditional random-walk methods—especially helpful in high-dimensional problems.
+            <span>
+               1. Randomly picks a momentum (like giving the particle a push).
+            </span>
+            <span>
+               2. Simulates its motion using simple physics equations.
+            </span>
+            <span>
+               3. Proposes the new position as the next sample.
+            </span>
+            This method creates long, informed steps that help cover space faster and more accurately than traditional random-walk methods—especially helpful in high-dimensional problems.
+            The simulation was implemented in <strong>Julia</strong> and parallelized using <code>Threads.@threads</code> to accelerate Leapfrog integration across particles.
         </p>
-        <!-- <p>
-            At each step, HMC:
-            <ol>
-            <li>Randomly picks a momentum (like giving the particle a push).</li>
-            <li>Simulates its motion using simple physics equations.</li>
-            <li>Proposes the new position as the next sample.</li>
-            </ol>
-        </p> -->
+    
         <h2>Results</h2>
-        <p>
-        The simulation was implemented in <strong>Julia</strong> and parallelized using <code>Threads.@threads</code> to accelerate Leapfrog integration across particles. 
+        <p> 
         The system was validated against theoretical models: for an ideal gas, HMC accurately reproduced the classical result 
         <code>E&#x0304; = (3/2)NkT</code>; when adding a harmonic potential, the average energy doubled as predicted by the equipartition theorem. 
         The method was also tested on generalized Hamiltonians of the form <code>E = A|&#x2192;p|<sup>s</sup></code>, revealing how increasing the exponent 
         <code>s</code> or spatial dimension <code>d</code> impacts average energy. These results confirm the effectiveness of HMC in capturing thermodynamic behavior 
         and demonstrate its scalability for simulating high-dimensional and non-trivial systems.
-        </p>
-
-        <p>More information can be found in the
-            <a href="assets/E207_Final_Report.pdf">report</a>.
+        More information can be found in the
+            <a href="assets/HamiltonianMonteCarlo.pdf">report</a>.
             <style>
                 a {
                     color: crimson;
