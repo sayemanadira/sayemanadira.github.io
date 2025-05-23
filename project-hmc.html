@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Project: Hamiltonian Monte Carlo | Sayema Lubis</title>
+    <style>
+        :root {
+            --bg: #fcfcfc;
+            --text: #000000;
+            --accent: #000000;
+            --soft-border: 1px solid rgba(0,0,0,0.1);
+        }
+        body, p, ul {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        header {
+            border-bottom: var(--soft-border);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            color: #000000;
+            font-weight: 500;
+            margin: 0.5rem 0;
+        }
+
+        .project-meta-container {
+            display: grid;
+            align-items: center; 
+             grid-template-columns: 1fr auto;
+            column-gap: 5px;
+            gap: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .text {
+        font-size: 20px;
+        }
+        .project-hero {
+            grid-column: 2;
+            max-width: 100%;
+            max-height:100%;
+            align-items: right;
+        }
+        .project-nav {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            padding: 1rem 0;
+            border-top: var(--soft-border);
+            border-bottom: var(--soft-border);
+        }
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .tech-tag {
+            display: inline-block;
+            background: rgba(0,0,0,0.05);
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-link">← Back to portfolio</a>
+        <div class="project-meta-container">
+            <div class="text">
+                <h1>Simulating Canonical Ensemble using Hamiltonian Monte Carlo</h1>
+                <style>
+                    h1 {
+                        font-size: 50px;
+                    }
+                </style>
+                <span>Spring 2025</span>
+                <span>Computational Physics (PHYS170X)</span>
+                <span>Partner(s): Richard Zheng</span>
+                <span>Julia</span>
+                <style>
+                    span {
+                        display: block; /* Forces each span to take full width and stack */
+                        }
+                </style>
+            </div>
+            <div class="image">
+                <img src="./assets/project-2.png" alt="TSM architecture diagram" class="project-hero">
+            </div>
+        </div>
+
+    
+    </header>
+
+    <main>
+        <div style="margin: 2rem 0;">
+            <span class="tech-tag">Parallelization</span>
+            <span class="tech-tag">Leapfrog Integration</span>
+        </div>
+        <h2>Overview</h2>
+        <p>This project investigates the use of Hamiltonian Monte Carlo (HMC) for simulating classical thermodynamic systems under the canonical ensemble. Traditional Markov Chain Monte Carlo (MCMC) methods like Metropolis-Hastings struggle in high-dimensional spaces, often failing to efficiently explore the narrow “typical set” where most probability mass lies. HMC addresses these limitations by leveraging Hamiltonian dynamics to propose informed transitions through phase space, enabling faster convergence and significantly higher acceptance rates, even in high dimensions.</p>
+
+        <h2>Technical Details</h2>
+        <p>
+            Hamiltonian Monte Carlo (HMC) is a smart way to explore complicated probability spaces. 
+            Instead of taking random steps like basic methods, HMC borrows ideas from physics to move more efficiently through space.
+            Imagine each possible state of a system as a point with both a <strong>position</strong> and <strong>momentum</strong>. 
+            These are combined into an "energy" using a formula called the <em>Hamiltonian</em>. HMC uses this energy to simulate how a particle would move, similar to tracing a smooth path through a landscape.
+
+            At each step, HMC:
+            <ol style="margin-top: 0%;">
+            <li>Randomly picks a momentum (like giving the particle a push).</li>
+            <li>Simulates its motion using simple physics equations.</li>
+            <li>Proposes the new position as the next sample.</li>
+            </ol>
+            <style>
+                ol {
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
+            </style>
+        This method creates long, informed steps that help cover space faster and more accurately than traditional random-walk methods—especially helpful in high-dimensional problems.
+        </p>
+        <!-- <p>
+            At each step, HMC:
+            <ol>
+            <li>Randomly picks a momentum (like giving the particle a push).</li>
+            <li>Simulates its motion using simple physics equations.</li>
+            <li>Proposes the new position as the next sample.</li>
+            </ol>
+        </p> -->
+        <h2>Results</h2>
+        <p>
+        The simulation was implemented in <strong>Julia</strong> and parallelized using <code>Threads.@threads</code> to accelerate Leapfrog integration across particles. 
+        The system was validated against theoretical models: for an ideal gas, HMC accurately reproduced the classical result 
+        <code>E&#x0304; = (3/2)NkT</code>; when adding a harmonic potential, the average energy doubled as predicted by the equipartition theorem. 
+        The method was also tested on generalized Hamiltonians of the form <code>E = A|&#x2192;p|<sup>s</sup></code>, revealing how increasing the exponent 
+        <code>s</code> or spatial dimension <code>d</code> impacts average energy. These results confirm the effectiveness of HMC in capturing thermodynamic behavior 
+        and demonstrate its scalability for simulating high-dimensional and non-trivial systems.
+        </p>
+
+        <p>More information can be found in the
+            <a href="assets/E207_Final_Report.pdf">report</a>.
+            <style>
+                a {
+                    color: crimson;
+                }
+                a:hover {
+                    color: rgb(46, 100, 236);
+                    text-decoration: wavy underline;
+                    /* text-underline-offset: 1rem; */
+                    text-decoration-color: rgb(46, 100, 236);
+                }
+            </style>
+        </p>
+        
+
+        <!-- <div class="centered-demo">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dRuZlszV2Ps?si=s9MTqBKWZx1uWdkq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <style>
+            .centered-demo{
+                margin-left: 17%;
+                align-content: center;
+            }
+        </style> -->
+    </main>
+
+    <!-- <div class="project-nav">
+        <a href="#" class="back-link">← Previous Project</a>
+        <a href="#" class="back-link">Next Project →</a>
+    </div> -->
+</body>
+</html>

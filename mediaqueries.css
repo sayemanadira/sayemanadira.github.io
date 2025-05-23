@@ -100,4 +100,8 @@
   .text-container {
     text-align: justify;
   }
+  
+  .project-meta-container {
+        grid-template-columns: 1fr; /* Stacks vertically on mobile */
+  }
 }
