@@ -299,6 +299,7 @@ section {
 .btn-color-1,
 .btn-color-2 {
   border: rgb(174, 10, 10) 0.1rem solid;
+  background: white;
 }
 
 .btn-color-1:hover,
@@ -306,9 +307,10 @@ section {
   cursor: pointer;
 }
 
-.btn-color-1{
-  background: none;
-}
+/* .btn-color-1{
+  background: white;
+} */
+
 .btn-color-2:hover {
   background: rgb(193, 10, 10);
   color: white;
@@ -319,9 +321,9 @@ section {
   color: white;
 }
 
-.btn-color-2 {
+/* .btn-color-2 {
   background: none;
-}
+} */
 
 .btn-color-2:hover {
   border: rgb(255, 255, 255) 0.1rem solid;
