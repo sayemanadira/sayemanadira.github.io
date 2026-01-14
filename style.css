@@ -508,3 +508,77 @@ footer {
 footer p {
   text-align: center;
 }
+
+/* MUSIC SECTION STUFF */
+#music-projects-page section {
+  height: auto;
+  margin: 0 10rem;
+  padding-bottom: 4vh;
+}
+
+/* Base link styling */
+.bouncing-link {
+  text-decoration: underline;
+  color: inherit;
+  display: inline-flex;
+  gap: 1px;
+}
+
+/* Each letter */
+.bouncing-link span {
+  display: inline-block;
+  animation: bounce 0.9s ease-in-out infinite alternate;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+/* Stagger the bounce */
+.bouncing-link span:nth-child(1) { animation-delay: 0s; }
+.bouncing-link span:nth-child(2) { animation-delay: 0.1s; }
+.bouncing-link span:nth-child(3) { animation-delay: 0.2s; }
+.bouncing-link span:nth-child(4) { animation-delay: 0.3s; }
+.bouncing-link span:nth-child(5) { animation-delay: 0.4s; }
+
+/* Hover effect */
+.bouncing-link:hover span {
+  color: #ff6fae;          /* pick any accent color */
+  transform: translateY(-12px) scale(1.05);
+}
+
+.section { margin-top: 44px; margin-bottom: 44px; }
+.grid { margin-top: 14px; }
+
+/* Make sure iframes behave like blocks (no weird gaps) */
+.embed {
+  width: 100%;
+  display: block;
+  border: 0;
+}
+
+/* SoundCloud: give it enough height for the artwork */
+.embed.soundcloud {
+  height: 400px; /* try 400–520 until it looks right */
+}
+
+/* Optional: a bit more breathing room between rows */
+.grid {
+  row-gap: 18px;
+}
+
+/* Mobile tweak */
+@media (max-width: 900px) {
+  .embed.soundcloud {
+    height: 480px; /* phone screens often need a bit more */
+  }
+}
+
+

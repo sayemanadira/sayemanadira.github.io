@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Projects | Sayema Lubis</title>
+
+  <!-- Reuse your site CSS if you want -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Page container */
+    .music-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .page-title {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .page-subtitle {
+      margin: 10px 0 0;
+      opacity: 0.8;
+      max-width: 60ch;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      border: 1px solid rgba(0,0,0,0.12);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      opacity: 0.9;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    .section {
+      margin-top: 44px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .section-note {
+      opacity: 0.75;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      grid-column: span 6;
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.75);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    /* SoundCloud embed: big, visible play button + room for text */
+    .section .card iframe.embed.soundcloud {
+    width: 100%;
+    height: 360px;   /* try 320–420 to taste */
+    display: block;
+    border: 0;
+    }
+    /* Force SoundCloud cards to span full grid */
+    .section .card:has(iframe.embed.soundcloud) {
+    grid-column: span 3;
+    }
+
+    .card-body {
+      padding: 14px 14px 16px;
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .card-meta {
+      margin: 6px 0 0;
+      font-size: 13px;
+      opacity: 0.75;
+      line-height: 1.35;
+    }
+
+
+
+    .embed {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      display: block;
+    }
+
+    .embed.soundcloud {
+  width: 100%;
+  height: 166px;   /* perfect for horizontal waveform */
+  border: 0;
+  display: block;
+}
+    @media (max-width: 900px) {
+  .embed.soundcloud {
+    height: 190px;
+  }
+}
+
+    .projects .card {
+      grid-column: span 4;
+    }
+
+    .project-links {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .project-links a {
+      text-decoration: none;
+      border: 1px solid rgba(0,0,0,0.12);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: inherit;
+      opacity: 0.9;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .project-links a:hover {
+      transform: translateY(-2px);
+      background: rgba(0,0,0,0.04);
+    }
+
+    .top-actions a {
+      text-decoration: none;
+      border: 1px solid rgba(0,0,0,0.12);
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .top-actions a:hover {
+      transform: translateY(-2px);
+      background: rgba(0,0,0,0.04);
+    }
+
+    /* Only apply this to the small icon/text articles inside .article-container */
+    .article-container > article {
+    display: flex;
+    width: 10rem;
+    justify-content: space-around;
+    gap: 0.5rem;
+    }
+
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .card { grid-column: span 12; }
+      .projects .card { grid-column: span 12; }
+      .page-header { flex-direction: column; align-items: flex-start; }
+    }
+
+    .video-row {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 18px;
+  align-items: start;
+
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.75);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  padding: 14px;
+}
+
+.video-frame {
+  width: 100%;
+  /* aspect-ratio: 16 / 9; */
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.video-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .video-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.youtube-container{
+    align-items: center;
+}
+
+  </style>
+</head>
+
+<body id="music-projects-page">
+
+  <main class="music-page">
+    <header class="page-header">
+      <div>
+        <h1 class="page-title">Music</h1>
+        <p class="page-subtitle">
+          Performances, original tracks, and music-related coding projects!
+        </p>
+      </div>
+
+      <div class="top-actions">
+        <!-- Replace with your actual links -->
+        <a href="https://www.youtube.com/@sayemanadira/videos" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
+        <a href="https://soundcloud.com/sayemanadira" target="_blank" rel="noopener noreferrer">SoundCloud ↗</a>
+        <a href="index.html">Back home</a>
+      </div>
+    </header>
+
+    <!-- 1) YouTube performances -->
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">Cover videos</h2>
+        <p class="section-note">Feel free to explore my channel!</p>
+      </div>
+
+      <div class="youtube-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/SDicLZ9kVj8?si=5ppxed9O5seZE2ML" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+      <div class="youtube-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/3-A2AOQ5yXA?si=S3QWESvSyKqQQi0J" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+    </section>
+
+ <!-- 2) SoundCloud -->
+<section class="section">
+  <div class="section-head">
+    <h2 class="section-title">SoundCloud tracks</h2>
+    <p class="section-note">Originals / demos / experiments.</p>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <iframe
+        class="embed soundcloud"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1811684577&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true">
+      </iframe>
+      <div class="card-body">
+        <h3 class="card-title">wanna be home w u</h3>
+        <p class="card-meta">2024 • bedroom + hyper-pop • vocal layering + distortion</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <iframe
+        class="embed soundcloud"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1523943832&color=%23757575&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true">
+      </iframe>
+      <div class="card-body">
+        <h3 class="card-title">do u think of me?</h3>
+        <p class="card-meta">2023 • experimenting with new drum patterns</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <iframe
+        class="embed soundcloud"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1235470480&color=%23757575&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true">
+      </iframe>
+      <div class="card-body">
+        <h3 class="card-title">belief</h3>
+        <p class="card-meta">2022 • inspired by Sevdaliza • my first finished project</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <iframe
+        class="embed soundcloud"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A856558555&color=%2384a4bf&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true">
+      </iframe>
+      <div class="card-body">
+        <h3 class="card-title">home with you (edit)</h3>
+        <p class="card-meta">2020 • edited the backing track using the vocal audio</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <iframe
+        class="embed soundcloud"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1591543803&color=%23243424&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true">
+      </iframe>
+      <div class="card-body">
+        <h3 class="card-title">midnight idea</h3>
+        <p class="card-meta">2023 • no vocals • synths + arpeggiators</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <iframe
+        class="embed soundcloud"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1599468321&color=%23243424&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true">
+      </iframe>
+      <div class="card-body">
+        <h3 class="card-title">that thing</h3>
+        <p class="card-meta">2023 • vocal chops + pitch modulation + sampling (from “Doo Wop” by Lauryn Hill)</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+    <!-- 3) Music + coding -->
+    <section class="section projects">
+      <div class="section-head">
+        <h2 class="section-title">Music + coding projects</h2>
+        <p class="section-note">DSP tools, research-y experiments, creative code.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Real-time Time-Scale Modification</h3>
+            <p class="card-meta">
+              WSOLA/phase vocoder exploration • interactive demo • timing alignment experiments.
+            </p>
+            <div class="project-links">
+              <a href="project-tsm.html">Write-up</a>
+              <a href="https://github.com/YOUR_REPO" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <a href="https://YOUR_DEMO_LINK" target="_blank" rel="noopener noreferrer">Demo ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Audio feature extraction playground</h3>
+            <p class="card-meta">
+              Spectrograms, onset detection, chroma, MFCCs • small experiments + visualizations.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/YOUR_REPO" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <a href="https://YOUR_NOTEBOOK_LINK" target="_blank" rel="noopener noreferrer">Notebook ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Interactive music tool (WIP)</h3>
+            <p class="card-meta">
+              A small web/audio interface idea • human-centered audio tooling • experiments.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/YOUR_REPO" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
