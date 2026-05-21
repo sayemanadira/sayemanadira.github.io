@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Playing Musical Chords through Hand Gesture Recognition | Sayema Lubis</title>
+    <style>
+        :root {
+            --bg: #fcfcfc;
+            --text: #000000;
+            --accent: #000000;
+            --soft-border: 1px solid rgba(0,0,0,0.1);
+        }
+        body, p, ul {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        header {
+            border-bottom: var(--soft-border);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            color: #000000;
+            font-weight: 500;
+            margin: 0.5rem 0;
+        }
+
+        .project-meta-container {
+            display: grid;
+            align-items: center; 
+             grid-template-columns: 1fr auto;
+            column-gap: 5px;
+            gap: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .text {
+        font-size: 20px;
+        }
+        .project-hero {
+            grid-column: 2;
+            max-width: 100%;
+            max-height:100%;
+            align-items: right;
+        }
+        .project-nav {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            padding: 1rem 0;
+            border-top: var(--soft-border);
+            border-bottom: var(--soft-border);
+        }
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .tech-tag {
+            display: inline-block;
+            background: rgba(0,0,0,0.05);
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+</head>
+<body>
+    <header>
+        <a href="index.html#projects" class="back-link">← Back to portfolio</a>
+        <div class="project-meta-container">
+            <div class="text">
+                <h1>Playing Musical Chords through Hand Gesture Recognition</h1>
+                <style>
+                    h1 {
+                        font-size: 50px;
+                    }
+                </style>
+                <span>Spring 2026</span>
+                <span>Computer Vision</span>
+                <span>Partner(s): Iris Randolph</span>
+                <span>Python, OpenCV, Mediapipe, Scikit-learn</span>
+                <style>
+                    span {
+                        display: block; /* Forces each span to take full width and stack */
+                        }
+                </style>
+            </div>
+            <div class="image">
+                <img src="./assets/project-5.jpg" alt="TSM architecture diagram" class="project-hero">
+            </div>
+        </div>
+
+    
+    </header>
+
+    <main>
+        <div style="margin: 2rem 0;">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">OpenCV</span>
+            <span class="tech-tag">Mediapipe</span>
+            <span class="tech-tag">Scikit-learn</span>
+            <span class="tech-tag">Dense Neural Networks</span>
+        </div>
+        <h2>Overview</h2>
+        <p>This project explores how computer vision can be used to create a real-time, gesture-controlled music interface. Inspired by gesture-based musical systems like Imogen Heap’s Mi.Mu gloves, we built a simplified system that recognizes hand gestures for numbers 0 through 5 and maps them to musical outputs in real time. The goal was to make musical interaction more intuitive and accessible by allowing users to trigger sounds through hand movement instead of a traditional instrument or controller.
+            <br><br>
+            The final system uses a webcam to detect a user’s hand, classify the gesture being shown, and play a corresponding musical chord. Gestures 1 through 5 were mapped to C major, D minor, A minor, F major, and G minor, respectively. The project serves as a proof of concept for combining computer vision, machine learning, and audio generation into an interactive creative tool.
+        </p>
+
+        <h2>Technical Details</h2>
+        <p>The pipeline was split into two main stages: hand landmark extraction and gesture classification. Instead of training directly on raw images, we used MediaPipe to detect 21 hand landmarks corresponding to key points such as the wrist, fingertips, and finger joints. This allowed the model to focus on the geometry of the hand rather than background, lighting, or camera differences.
+        <br><br>
+        From the MediaPipe landmarks, we constructed a 72-feature input vector. This included the 3D coordinates of the 21 landmarks, plus additional hand-engineered features such as fingertip distances and finger-extension measurements. These features were normalized so that the model would be less sensitive to hand size or distance from the camera.
+        <br><br>
+        For classification, we used a Multi-Layer Perceptron (MLP), a dense neural network well-suited for structured geometric data. The model predicted one of six gesture classes corresponding to finger counts from 0 to 5. During real-time use, webcam frames were processed continuously with OpenCV, landmarks were extracted with MediaPipe, the MLP predicted the gesture class, and the predicted class was mapped to a chord using PyAudio.
+        <br><br>
+        A major part of the project involved dataset experimentation. We first tested a large grayscale fingers dataset, which was useful for prototyping but too standardized to generalize well. We then tried a smaller RGB counting-fingers dataset, which had more natural variation but too few images per class. Finally, we identified HaGRID as a stronger future dataset because it contains a much larger and more diverse set of hand gestures, backgrounds, lighting conditions, and users.
+        </p>
+
+        <h2>Results</h2>
+        <p>
+            The project successfully demonstrated an end-to-end real-time gesture-to-music system. The model could recognize finger-count gestures from webcam input and trigger corresponding chords while the gesture remained visible. This confirmed that a modular pipeline using MediaPipe, an MLP classifier, OpenCV, and PyAudio can support interactive gesture-based musical control.
+To evaluate the classifier, we used both a confusion matrix on static images and a manually labeled video test. The confusion matrix showed that the model could correctly classify several gestures, but it also confused visually similar finger-count poses, especially when trained on the small RGB dataset. For video evaluation, we manually labeled 327 frames and compared the model’s predictions frame-by-frame. The classifier achieved about 65% accuracy, which was stronger than expected given the limited training data, real-world lighting variation, and transitional hand movements between gestures.
+The biggest takeaway was that dataset quality mattered more than model complexity. The MLP architecture was appropriate for landmark-based classification, but the system’s reliability was limited by the size and diversity of the training data. With fuller integration of HaGRID and more gesture examples, the system could become much more robust and expressive. Future extensions could include more gesture classes, volume control, tone modulation, or a larger musical vocabulary beyond the five mapped chords.
+        </p>
+        <p>More information can be found in our
+            <a href="assets/CS153_Final_Report-1.pdf">report</a>.
+            <style>
+                a {
+                    color: crimson;
+                }
+                a:hover {
+                    color: rgb(46, 100, 236);
+                    text-decoration: wavy underline;
+                    /* text-underline-offset: 1rem; */
+                    text-decoration-color: rgb(46, 100, 236);
+                }
+            </style>
+        </p>
+        <a href="https://github.com/sayemanadira/realtime_handchords" style="text-decoration: none; color: inherit;">
+        <h1 class="title bouncing-title">
+        <span>T</span>
+        <span>r</span>
+        <span>y</span>
+        <span>&nbsp;</span>
+        <span>i</span>
+        <span>t</span>
+        <span>!</span>
+        <span>&nbsp;</span>
+      </h1>
+      </a>
+      <style> 
+        .bouncing-title {
+          display: flex; /* Align letters in a row */
+          justify-content: center;
+          gap: 2px; /* Space between letters */
+        }
+        .bouncing-title:hover{
+            color: crimson;
+        }
+
+        .bouncing-title span {
+          display: inline-block;
+          animation: bounce 1s ease infinite alternate; /* Bounce effect */
+        }
+
+        /* Bounce Animation (Up and Down) */
+        @keyframes bounce {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-10px); } /* Adjust height (e.g., -20px) */
+        }
+
+        /* Staggered Delay for Each Letter */
+        .bouncing-title span:nth-child(1) { animation-delay: 0.1s; }
+        .bouncing-title span:nth-child(2) { animation-delay: 0.2s; }
+        .bouncing-title span:nth-child(3) { animation-delay: 0.3s; }
+        .bouncing-title span:nth-child(4) { animation-delay: 0.4s; }
+        .bouncing-title span:nth-child(5) { animation-delay: 0.5s; }
+        .bouncing-title span:nth-child(6) { animation-delay: 0.6s; }
+        .bouncing-title span:nth-child(7) { animation-delay: 0.7s; }
+        .bouncing-title span:nth-child(8) { animation-delay: 0.8s; }
+        .bouncing-title span:nth-child(9) { animation-delay: 0.9s; }
+        .bouncing-title span:nth-child(10) { animation-delay: 1s; }
+        .bouncing-title span:nth-child(11) { animation-delay: 1.1s; }
+        .bouncing-title span:nth-child(12) { animation-delay: 1.2s; }
+        .bouncing-title span:nth-child(13) { animation-delay: 1.3s; }
+        .bouncing-title span:nth-child(14) { animation-delay: 1.4s; }
+        .bouncing-title span:nth-child(15) { animation-delay: 1.5s; }
+        .bouncing-title span:nth-child(16) { animation-delay: 1.6s; }
+        .bouncing-title span:nth-child(17) { animation-delay: 1.7s; }
+        .bouncing-title span:nth-child(18) { animation-delay: 1.8s; }
+
+
+      </style>
+
+      <img src="assets/demo-cv.gif" alt="Description of the GIF"> <style>
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+      </style>
+
+    </main>
+
+    <!-- <div class="project-nav">
+        <a href="#" class="back-link">← Previous Project</a>
+        <a href="#" class="back-link">Next Project →</a>
+    </div> -->
+</body>
+</html>
