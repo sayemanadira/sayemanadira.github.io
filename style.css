@@ -459,6 +459,8 @@ article .icon {
 
 /* PROJECTS SECTION */
 
+/* PROJECTS SECTION */
+
 #projects {
   position: relative;
   margin-left: 0;
@@ -468,11 +470,28 @@ article .icon {
   overflow: hidden;
 }
 
+/* Keep "Browse My" and "Recent Projects" centered */
+#projects > .section__text__p1,
+#projects > .title {
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#projects .bouncing-title {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+
+/* Wrapper around project cards */
 #projects .experience-details-container {
   width: 100%;
   overflow: hidden;
 }
 
+/* Horizontal scrolling row */
 #projects .about-containers {
   display: flex;
   flex-direction: row;
@@ -493,35 +512,40 @@ article .icon {
   box-sizing: border-box;
 }
 
+/* Individual project cards */
 #projects .details-container.color-container {
   flex: 0 0 min(420px, 85vw);
   scroll-snap-align: start;
+
+  border-color: rgb(163, 163, 163);
+  background: rgb(255, 255, 255);
 }
 
+/* Project images */
 #projects .project-img {
+  border-radius: 2rem;
   width: 90%;
   height: 250px;
   object-fit: contain;
 }
 
+#projects .project-title {
+  margin: 1rem;
+  color: black;
+}
+
+#projects .project-btn {
+  color: black;
+  border-color: rgb(163, 163, 163);
+}
+
+/* Optional: hide scrollbar but keep horizontal scrolling */
 #projects .about-containers {
   scrollbar-width: none;
 }
 
 #projects .about-containers::-webkit-scrollbar {
   display: none;
-}
-
-#projects .section__text__p1,
-#projects .title {
-  text-align: center;
-  width: 100%;
-}
-
-#projects .bouncing-title {
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* CONTACT */
