@@ -470,7 +470,7 @@ article .icon {
   overflow: hidden;
 }
 
-/* Keep "Browse My" and "Recent Projects" centered */
+/* Center the "Browse My" and "Recent Projects" text */
 #projects > .section__text__p1,
 #projects > .title {
   width: 100%;
@@ -485,13 +485,13 @@ article .icon {
   gap: 2px;
 }
 
-/* Wrapper around project cards */
+/* Outer wrapper for the project row */
 #projects .experience-details-container {
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
-/* Horizontal scrolling row */
+
 #projects .about-containers {
   display: flex;
   flex-direction: row;
@@ -504,12 +504,26 @@ article .icon {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 
-  padding: 2rem 10rem;
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+
+  scroll-padding-left: 4rem;
+  scroll-padding-right: 4rem;
+
   margin-top: 2rem;
   margin-bottom: 2rem;
 
   width: 100%;
   box-sizing: border-box;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgb(163, 163, 163) transparent;
+}
+
+#projects .about-containers:focus {
+  outline: none;
 }
 
 /* Individual project cards */
@@ -539,14 +553,34 @@ article .icon {
   border-color: rgb(163, 163, 163);
 }
 
-/* Optional: hide scrollbar but keep horizontal scrolling */
-#projects .about-containers {
-  scrollbar-width: none;
+/* Visible custom scrollbar */
+#projects .about-containers::-webkit-scrollbar {
+  height: 10px;
 }
 
-#projects .about-containers::-webkit-scrollbar {
-  display: none;
+#projects .about-containers::-webkit-scrollbar-track {
+  background: transparent;
 }
+
+#projects .about-containers::-webkit-scrollbar-thumb {
+  background-color: rgb(163, 163, 163);
+  border-radius: 999px;
+}
+
+#projects .about-containers::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(120, 120, 120);
+}
+
+@media (max-width: 900px) {
+  #projects .about-containers {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    scroll-padding-left: 1.5rem;
+    scroll-padding-right: 1.5rem;
+  }
+}
+/* PROJECTS SECTION */
 
 /* CONTACT */
 
