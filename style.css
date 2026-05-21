@@ -457,9 +457,6 @@ article .icon {
   
 }
 
-/* PROJECTS SECTION */
-
-/* PROJECTS SECTION */
 
 #projects {
   position: relative;
@@ -581,6 +578,23 @@ article .icon {
   }
 }
 /* PROJECTS SECTION */
+
+/* MUSIC PROJECTS SECTION */
+
+#music-projects {
+  height: auto;
+  min-height: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin: 0 10rem;
+}
+
+#music-projects .title {
+  margin: 0;
+}
+
+/* MUSIC PROJECTS SECTION */
+
 
 /* CONTACT */
 
