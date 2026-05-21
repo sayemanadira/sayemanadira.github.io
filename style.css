@@ -463,7 +463,7 @@ article .icon {
   position: relative;
   margin-left: 0;
   margin-right: 0;
-  padding-left: 10rem;
+  padding-left: 0;
   padding-right: 0;
   overflow: hidden;
 }
@@ -485,7 +485,7 @@ article .icon {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 
-  padding: 2rem 10rem 2rem 0;
+  padding: 2rem 10rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
 
@@ -510,6 +510,18 @@ article .icon {
 
 #projects .about-containers::-webkit-scrollbar {
   display: none;
+}
+
+#projects .section__text__p1,
+#projects .title {
+  text-align: center;
+  width: 100%;
+}
+
+#projects .bouncing-title {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* CONTACT */
