@@ -457,6 +457,60 @@ article .icon {
   
 }
 
+/* PROJECTS SECTION */
+
+#projects {
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 10rem;
+  padding-right: 0;
+  overflow: hidden;
+}
+
+#projects .experience-details-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+#projects .about-containers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 2rem;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  padding: 2rem 10rem 2rem 0;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#projects .details-container.color-container {
+  flex: 0 0 min(420px, 85vw);
+  scroll-snap-align: start;
+}
+
+#projects .project-img {
+  width: 90%;
+  height: 250px;
+  object-fit: contain;
+}
+
+#projects .about-containers {
+  scrollbar-width: none;
+}
+
+#projects .about-containers::-webkit-scrollbar {
+  display: none;
+}
 
 /* CONTACT */
 
